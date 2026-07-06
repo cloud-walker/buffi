@@ -2,7 +2,8 @@
   "name": "buffi",
   "type": "module",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "react": "^19.2.7",
