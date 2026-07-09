@@ -2,6 +2,7 @@
   "name": "buffi",
   "type": "module",
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "vite",
     "build": "vite build"
   },
