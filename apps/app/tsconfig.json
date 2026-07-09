@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "paths": {
+      "~/*": ["./styled-system/*", "./src/*"]
+    }
+  }
+}

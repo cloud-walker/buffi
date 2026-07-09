@@ -1,7 +1,7 @@
 import * as R from 'remeda'
 import { faker } from '@faker-js/faker'
 
-import { css } from "../styled-system/css";
+import { css } from "~/css";
 
 interface ExpenseEntity {
   id: string
@@ -13,11 +13,14 @@ export function App() {
   return (
     <div
       className={css({
-        textStyle: "2xl",
+        padding: '4',
+        textStyle: "xl",
       })}
     >
       {R.pipe(faker.helpers.multiple(() => makeExpenseEntity()), R.map(ex => {
-        return <div key={ex.id}>{ JSON.stringify(ex)}</div>
+        return <div key={ex.id} className={css({
+          padding: '4',
+        })}>{ JSON.stringify(ex)}</div>
       }))}
     </div>
   );
