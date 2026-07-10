@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "prepare": "panda codegen",
+    "type-check": "tsc",
     "dev": "vite",
     "build": "vite build"
   },

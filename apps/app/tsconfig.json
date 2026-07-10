@@ -3,6 +3,8 @@
     "jsx": "react-jsx",
     "module": "preserve",
     "moduleResolution": "bundler",
+    "noEmit": true,
+    "skipLibCheck": true,
     "paths": {
       "~/*": ["./styled-system/*", "./src/*"]
     }
