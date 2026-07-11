@@ -5,8 +5,10 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true,
+    "strict": true,
     "paths": {
-      "~/*": ["./styled-system/*", "./src/*"]
-    }
-  }
+      "~/*": ["./styled-system/*", "./src/*"],
+    },
+  },
 }
