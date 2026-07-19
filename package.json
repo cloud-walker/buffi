@@ -1,5 +1,6 @@
 {
   "name": "@buffi/workbench",
+  "packageManager": "pnpm@11.14.0",
   "devEngines": {
     "runtime": {
       "name": "node",
