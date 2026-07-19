@@ -1,3 +1,11 @@
 {
-  "name": "@buffi/workbench"
+  "name": "@buffi/workbench",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "lts",
+      "onFail": "download"
+    }
+  },
+  "devDependencies": {}
 }
