@@ -1,6 +1,6 @@
 {
   "name": "@buffi/workbench",
-  "packageManager": "pnpm@11.14.0",
+  "packageManager": "pnpm@11.15.1",
   "devEngines": {
     "runtime": {
       "name": "node",
@@ -8,5 +8,8 @@
       "onFail": "download"
     }
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "railway": "^3.5.10"
+  }
 }
