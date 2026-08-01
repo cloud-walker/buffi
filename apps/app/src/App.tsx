@@ -1,5 +1,5 @@
-import * as R from "remeda";
 import { faker } from "@faker-js/faker";
+import * as R from "remeda";
 
 import { css } from "~/css";
 import { makeEntityFactory } from "./helpers/make-entity-factory.mock";
