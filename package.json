@@ -4,12 +4,12 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "lts",
+      "version": "24.18.1",
       "onFail": "download"
     }
   },
   "devDependencies": {},
   "dependencies": {
-    "railway": "^3.5.10"
+    "railway": "^3.7.0"
   }
 }
