@@ -1,15 +1,22 @@
 {
-  "name": "@buffi/workbench",
-  "packageManager": "pnpm@11.15.1",
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": "24.18.1",
-      "onFail": "download"
-    }
-  },
-  "devDependencies": {},
-  "dependencies": {
-    "railway": "^3.7.0"
-  }
+	"name": "@buffi/workbench",
+	"type": "module",
+	"scripts": {
+		"format": "oxfmt",
+		"format:check": "oxfmt --check"
+	},
+	"dependencies": {
+		"railway": "^3.7.0"
+	},
+	"devDependencies": {
+		"oxfmt": "^0.61.0"
+	},
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": "24.18.1",
+			"onFail": "download"
+		}
+	},
+	"packageManager": "pnpm@11.18.0"
 }
