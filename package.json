@@ -9,7 +9,7 @@
 		"railway": "^3.8.1"
 	},
 	"devDependencies": {
-		"oxfmt": "^0.62.0"
+		"oxfmt": "^0.63.0"
 	},
 	"devEngines": {
 		"runtime": {
