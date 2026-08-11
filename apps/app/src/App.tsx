@@ -1,45 +1,35 @@
-import { faker } from '@faker-js/faker'
-import * as R from 'remeda'
-
 import { css } from '~/css'
 
-import { makeEntityFactory } from './helpers/make-entity-factory.mock'
-
-interface ExpenseEntity {
-	id: string
-	title: string
-	amount: number
-}
+import { appStore, Provider, TableView, useRow } from './appStore'
+import { raise } from './helpers/raise'
 
 export function App() {
 	return (
-		<div
-			className={css({
-				padding: '4',
-				textStyle: 'xl',
-			})}
-		>
-			{R.pipe(
-				expense.list({ count: [1, 10] }),
-				R.map((ex) => {
-					return (
-						<div
-							key={ex.id}
-							className={css({
-								padding: '4',
-							})}
-						>
-							{JSON.stringify(ex)}
-						</div>
-					)
-				}),
-			)}
-		</div>
+		<Provider store={appStore}>
+			<ul
+				className={css({
+					padding: '4',
+					textStyle: 'xl',
+				})}
+			>
+				<TableView tableId="expense" rowComponent={ExpenseRow} />
+			</ul>
+		</Provider>
 	)
 }
 
-const expense = makeEntityFactory<ExpenseEntity>((id) => ({
-	id: `expense_${id}`,
-	title: faker.commerce.productName(),
-	amount: faker.number.float(),
-}))
+const formatter = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR' })
+
+function ExpenseRow(props: { rowId: string }) {
+	const expense =
+		useRow('expense', props.rowId) ?? raise(`No expense found for expense ${props.rowId}`)
+	return (
+		<li
+			className={css({
+				color: 'blue.400',
+			})}
+		>
+			{expense.title} - {formatter.format(expense.amount)}
+		</li>
+	)
+}

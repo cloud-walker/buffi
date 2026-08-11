@@ -3,6 +3,7 @@
 		"jsx": "react-jsx",
 		"module": "preserve",
 		"moduleResolution": "bundler",
+		"target": "es2017",
 		"noEmit": true,
 		"skipLibCheck": true,
 		"noUncheckedIndexedAccess": true,
