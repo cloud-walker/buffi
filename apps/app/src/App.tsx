@@ -26,7 +26,7 @@ function ExpenseRow(props: { rowId: string }) {
 	return (
 		<li
 			className={css({
-				color: 'blue.400',
+				color: 'green.400',
 			})}
 		>
 			{expense.title} - {formatter.format(expense.amount)}
