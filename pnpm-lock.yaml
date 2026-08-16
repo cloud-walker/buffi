@@ -56,6 +56,12 @@ importers:
         specifier: ^8.2.1
         version: 8.2.1(esbuild@0.28.1)(tsx@4.23.1)
 
+  apps/sync:
+    dependencies:
+      tinybase:
+        specifier: ^9.4.0
+        version: 9.4.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+
 packages:
 
   '@babel/helper-string-parser@7.29.7':

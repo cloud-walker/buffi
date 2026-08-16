@@ -1,0 +1,8 @@
+{
+	"name": "@buffi/sync",
+	"private": true,
+	"type": "module",
+	"dependencies": {
+		"tinybase": "^9.4.0"
+	}
+}
