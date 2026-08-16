@@ -2,7 +2,14 @@
 	"name": "@buffi/sync",
 	"private": true,
 	"type": "module",
+	"scripts": {
+		"dev": "tsx watch src/main.ts",
+		"start": "tsx src/main.ts"
+	},
 	"dependencies": {
-		"tinybase": "^9.4.0"
+		"@types/ws": "^8.18.1",
+		"tinybase": "^9.4.0",
+		"tsx": "^4.23.12",
+		"ws": "^8.21.3"
 	}
 }
