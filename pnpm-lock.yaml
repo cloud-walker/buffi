@@ -33,6 +33,9 @@ importers:
       tinybase:
         specifier: ^9.4.0
         version: 9.4.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(ws@8.21.3)(zod@4.4.3)
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
     devDependencies:
       '@faker-js/faker':
         specifier: ^10.5.0
