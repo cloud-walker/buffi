@@ -4,7 +4,7 @@ import { createOpfsPersister } from 'tinybase/persisters/persister-browser/with-
 import { createWsSynchronizer } from 'tinybase/synchronizers/synchronizer-ws-client/with-schemas'
 import * as TBReact from 'tinybase/ui-react/with-schemas'
 import { createMergeableStore, type NoValuesSchema } from 'tinybase/with-schemas'
-import z from 'zod'
+import { z } from 'zod'
 
 import { makeEntityFactory } from './helpers/make-entity-factory.mock'
 
@@ -43,9 +43,7 @@ await persister.startAutoPersisting()
 
 const syncUrl = z.url().parse(import.meta.env.VITE_SYNC_WS_URL)
 createWsSynchronizer(appStore, new WebSocket(`${syncUrl}/expense`))
-	.then((s) => {
-		s.startSync()
-	})
+	.then((s) => s.startSync())
 	.catch((err) => {
 		/**
 		 * @todo, we probably need a way to track those errors
