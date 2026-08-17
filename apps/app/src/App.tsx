@@ -1,19 +1,32 @@
 import { css } from '~/css'
 
-import { appStore, Provider, TableView, useRow } from './appStore'
+import { appStore, makeExpense, Provider, TableView, useRow } from './appStore'
 import { raise } from './helpers/raise'
 
 export function App() {
 	return (
 		<Provider store={appStore}>
-			<ul
+			<div
 				className={css({
 					padding: '4',
-					textStyle: 'xl',
 				})}
 			>
-				<TableView tableId="expense" rowComponent={ExpenseRow} />
-			</ul>
+				<ul
+					className={css({
+						textStyle: 'xl',
+					})}
+				>
+					<TableView tableId="expense" rowComponent={ExpenseRow} />
+				</ul>
+				<button
+					type="button"
+					onClick={() => {
+						appStore.addRow('expense', makeExpense())
+					}}
+				>
+					Add Expense
+				</button>
+			</div>
 		</Provider>
 	)
 }

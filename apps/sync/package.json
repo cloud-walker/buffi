@@ -1,0 +1,16 @@
+{
+	"name": "@buffi/sync",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "tsx watch --env-file-if-exists=.env.development src/main.ts",
+		"start": "tsx src/main.ts"
+	},
+	"dependencies": {
+		"@types/ws": "^8.18.1",
+		"tinybase": "^9.4.0",
+		"tsx": "^4.23.12",
+		"ws": "^8.21.3",
+		"zod": "^4.4.3"
+	}
+}

@@ -3,8 +3,7 @@
 	"type": "module",
 	"scripts": {
 		"format": "oxfmt",
-		"format:check": "oxfmt --check",
-		"dev": "pnpm --filter buffi dev"
+		"format:check": "oxfmt --check"
 	},
 	"dependencies": {
 		"railway": "^3.8.1"
