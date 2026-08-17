@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker'
-import * as R from 'remeda'
 import { createOpfsPersister } from 'tinybase/persisters/persister-browser/with-schemas'
 import { createWsSynchronizer } from 'tinybase/synchronizers/synchronizer-ws-client/with-schemas'
 import * as TBReact from 'tinybase/ui-react/with-schemas'
@@ -26,16 +25,7 @@ const appStoreTablesSchema = {
 		amount: { type: 'number', required: true },
 	},
 } as const
-export const appStore = createMergeableStore()
-	.setTablesSchema(appStoreTablesSchema)
-	.setTable(
-		'expense',
-		R.pipe(
-			makeExpense.list({ count: [1, 10] }),
-			R.map((ex) => [ex.id, ex] as const),
-			R.fromEntries(),
-		),
-	)
+export const appStore = createMergeableStore().setTablesSchema(appStoreTablesSchema)
 const rootDir = await navigator.storage.getDirectory()
 const handle = await rootDir.getFileHandle('app-store.json', { create: true })
 const persister = createOpfsPersister(appStore, handle)
