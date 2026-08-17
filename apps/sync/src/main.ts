@@ -1,13 +1,15 @@
 import { createWsServer } from 'tinybase/synchronizers/synchronizer-ws-server'
 import { WebSocketServer } from 'ws'
+import { z } from 'zod'
 
+const port = z.coerce.number().int().min(1).parse(process.env.PORT)
 const wsServer = new WebSocketServer({
-	port: 8080,
+	port,
 })
 const server = createWsServer(wsServer)
 
 wsServer.on('listening', () => {
-	console.log(`sync server listening on ws://localhost:${8080}`)
+	console.log(`sync server listening on ws://localhost:${port}`)
 })
 
 process.on('SIGINT', () => handleShutdown('SIGINT'))
