@@ -1,7 +1,6 @@
 name: Deploy Buffi Sync
 on:
   workflow_dispatch:
-  pull_request:
   push:
     branches:
       - main
