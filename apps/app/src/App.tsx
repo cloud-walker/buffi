@@ -1,6 +1,6 @@
 import { css } from '~/css'
 
-import { appStore, makeExpense, Provider, TableView, useRow } from './appStore'
+import { appStore, makeExpense, Provider, SortedTableView, useRow } from './appStore'
 import { raise } from './helpers/raise'
 
 export function App() {
@@ -16,7 +16,7 @@ export function App() {
 						textStyle: 'xl',
 					})}
 				>
-					<TableView tableId="expense" rowComponent={ExpenseRow} />
+					<SortedTableView tableId="expense" cellId="createdAt" rowComponent={ExpenseRow} />
 				</ul>
 				<button
 					type="button"
@@ -31,7 +31,8 @@ export function App() {
 	)
 }
 
-const formatter = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR' })
+const priceFormatter = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR' })
+const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium', timeStyle: 'medium' })
 
 function ExpenseRow(props: { rowId: string }) {
 	const expense =
@@ -42,7 +43,8 @@ function ExpenseRow(props: { rowId: string }) {
 				color: 'green.400',
 			})}
 		>
-			{expense.title} - {formatter.format(expense.amount)}
+			{expense.title} - {priceFormatter.format(expense.amount)} -{' '}
+			{dateFormatter.format(new Date(expense.createdAt))}
 		</li>
 	)
 }
