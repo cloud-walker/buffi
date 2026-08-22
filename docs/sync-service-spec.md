@@ -6,7 +6,7 @@ Spec date: 2026-08-16. Compiled from ["Bridge sync service for Expense (pre-Grou
 
 This is a **temporary bridge**, not buffi's final sync architecture. It syncs only the `Expense` table — the one entity implemented in code today (`apps/app/src/appStore.ts`) — across clients, via a shared, unauthenticated, in-memory WebSocket relay. It exists so sync works end-to-end for the current codebase before two other efforts land:
 
-- **["Local-first persistence for Expense"](https://github.com/cloud-walker/buffi/issues/1)** already locked the *final* architecture: one `MergeableStore` per `Group`, and `apps/sync` with server-side SQLite-on-volume persistence (see ["Final technology decision (lock-in)"](https://github.com/cloud-walker/buffi/issues/5)). This bridge does not implement that — no per-Group scoping, no server-side persistence.
+- **["Local-first persistence for Expense"](https://github.com/cloud-walker/buffi/issues/1)** already locked the _final_ architecture: one `MergeableStore` per `Group`, and `apps/sync` with server-side SQLite-on-volume persistence (see ["Final technology decision (lock-in)"](https://github.com/cloud-walker/buffi/issues/5)). This bridge does not implement that — no per-Group scoping, no server-side persistence.
 - **["Auth/identity for Expense"](https://github.com/cloud-walker/buffi/issues/10)** is still deciding how `apps/sync` authenticates/authorizes per-Group access. This bridge has no auth at all — a single shared channel open to any client that connects.
 
 Both are conscious, temporary omissions, not oversights. This bridge is expected to be superseded once `Group` ships in code and #10 resolves.
@@ -15,18 +15,18 @@ Both are conscious, temporary omissions, not oversights. This bridge is expected
 
 ## Server: `apps/sync`
 
-**Function**: [`createWsServer`](https://tinybase.org/api/synchronizer-ws-server/functions/creation/createwsserver/), from `tinybase/synchronizers/synchronizer-ws-server`, called with **only** its required argument — no `createPersisterForPath`. Deliberately *not* the stripped-down `createWsServerSimple` sibling: `createWsServer` with no persister factory behaves identically to `createWsServerSimple` for this bridge (a pure in-memory relay, no persistence), but keeps the exact parameter #5's eventual SQLite-on-volume persistence will need already in place — unused today, added later without a function/import/type swap. (#18)
+**Function**: [`createWsServer`](https://tinybase.org/api/synchronizer-ws-server/functions/creation/createwsserver/), from `tinybase/synchronizers/synchronizer-ws-server`, called with **only** its required argument — no `createPersisterForPath`. Deliberately _not_ the stripped-down `createWsServerSimple` sibling: `createWsServer` with no persister factory behaves identically to `createWsServerSimple` for this bridge (a pure in-memory relay, no persistence), but keeps the exact parameter #5's eventual SQLite-on-volume persistence will need already in place — unused today, added later without a function/import/type swap. (#18)
 
 **Minimal entry point**:
 
 ```ts
 // apps/sync/src/index.ts
-import {createWsServer} from 'tinybase/synchronizers/synchronizer-ws-server';
-import {WebSocketServer} from 'ws';
+import { createWsServer } from 'tinybase/synchronizers/synchronizer-ws-server'
+import { WebSocketServer } from 'ws'
 
-const port = Number(process.env.PORT ?? 8043);
+const port = Number(process.env.PORT ?? 8043)
 
-createWsServer(new WebSocketServer({port}));
+createWsServer(new WebSocketServer({ port }))
 ```
 
 Requires the `ws` package directly (an optional peer dependency of `tinybase`) — no HTTP framework (Express/Hono/Koa). `ws`'s `WebSocketServer` constructed with `{port}` runs its own internal Node `http.Server` and handles the WebSocket upgrade handshake itself. (#18)

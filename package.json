@@ -6,10 +6,10 @@
 		"format:check": "oxfmt --check"
 	},
 	"dependencies": {
-		"railway": "^3.8.1"
+		"railway": "^3.10.0"
 	},
 	"devDependencies": {
-		"oxfmt": "^0.63.0"
+		"oxfmt": "^0.64.0"
 	},
 	"devEngines": {
 		"runtime": {
