@@ -8,7 +8,7 @@
 	},
 	"dependencies": {
 		"@types/ws": "^8.18.1",
-		"tinybase": "^9.4.0",
+		"tinybase": "^9.5.1",
 		"tsx": "^4.23.12",
 		"ws": "^8.21.3",
 		"zod": "^4.4.3"
